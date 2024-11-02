@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" placeholder="Enter Number" id="display" value="" />
+        <div class="button">
+            <button onclick="appendnumber('9')">9</button>
+            <button onclick="appendnumber('8')">8</button>
+            <button onclick="appendnumber('7')">7</button>
+            <button onclick="appendnumber('6')">6</button>
+            <button onclick="appendnumber('5')">5</button>
+            <button onclick="appendnumber('4')">4</button>
+            <button onclick="appendnumber('3')">3</button>
+            <button onclick="appendnumber('2')">2</button>
+            <button onclick="appendnumber('1')">1</button>
+            <button onclick="appendnumber('0')">0</button>
+            <button onclick="appendnumber('.')">.</button>
+            <button onclick="appendop('+')">+</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendop('-')">-</button>
+            <button onclick="appendop('*')">*</button>
+            <button onclick="appendop('/')">/</button>
+            <button onclick="appendop('%')">%</button>
+            <button onclick="equal()">=</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        let firstNumber = '';
+        let operator = '';
+        let secondNumber = '';
+
+        function appendnumber(number) {
+            const display = document.getElementById('display');
+            display.value += number;
+        }
+
+        function appendop(op) {
+            const display = document.getElementById('display');
+            firstNumber = display.value;
+            operator = op;
+            display.value = '';
+        }
+
+        function clearDisplay() {
+            const display = document.getElementById('display');
+            display.value = '';
+            firstNumber = '';
+            operator = '';
+            secondNumber = '';
+        }
+
+        function equal() {
+            const display = document.getElementById('display');
+            secondNumber = display.value;
+            let result;
+            switch (operator) {
+                case '+':
+                    result = parseFloat(firstNumber) + parseFloat(secondNumber);
+                    break;
+                case '-':
+                    result = parseFloat(firstNumber) - parseFloat(secondNumber);
+                    break;
+                case '*':
+                    result = parseFloat(firstNumber) * parseFloat(secondNumber);
+                    break;
+                case '%':
+                    result = parseFloat(firstNumber) % parseFloat(secondNumber);
+                    break;
+                case '/':
+                    if (secondNumber == '0') {
+                        display.value = "Error: Divide by zero";
+                        return;
+                    } else {
+                        result = parseFloat(firstNumber) / parseFloat(secondNumber);
+                    }
+                    break;
+                default:
+                    console.log("Operator not found");
+                    return;
+            }
+            display.value = result;
+            firstNumber = '';
+            secondNumber = '';
+            operator = '';
+        }
+    </script>
+</body>
+
+</html>

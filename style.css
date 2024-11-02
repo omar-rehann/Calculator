@@ -1,0 +1,42 @@
+body {
+    background-color: #ddd;
+    background-image: url(photo-1518133910546-b6c2fb7d79e3.avif);
+    background-size: cover;
+    height: 100vh;
+}
+
+.container {
+    width: 450px;
+    height: 450px;
+    background-color: rgb(0, 0, 0, 90%);
+    padding: 15px;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 0px auto;
+}
+
+.container input {
+    width: 90%;
+    border: none;
+    padding: 10px;
+    margin: 20px;
+    border: none;
+    border-radius: 3px;
+}
+
+.container .button {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    line-height: 2;
+}
+
+.container .button button {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border-radius: 3px;
+    border: none;
+    margin: 10px 10px;
+    text-align: center;
+    padding: 10px;
+}
